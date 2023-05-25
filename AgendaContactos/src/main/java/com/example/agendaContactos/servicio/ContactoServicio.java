@@ -1,5 +1,3 @@
-//Revisado
-
 package com.example.agendaContactos.servicio;
 
 import com.example.agendaContactos.entidad.Contacto;

@@ -1,5 +1,3 @@
-//Revisado
-
 package com.example.agendaContactos.entidad;
 
 import jakarta.persistence.*;
