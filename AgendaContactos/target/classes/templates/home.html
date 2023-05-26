@@ -7,6 +7,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <script src="https://kit.fontawesome.com/5c6dd94472.js" crossorigin="anonymous"></script>
 </head>
 <body style="background-image: url('https://img.freepik.com/free-vector/watercolor-wallpaper-with-luxurious-golden-accents_79603-1195.jpg?w=1060&t=st=1684804717~exp=1684805317~hmac=490e0f67d2e2df42b8fa994ccce13f316278af1273ea0db7192c133db9670199');
@@ -31,6 +32,16 @@
             </li>
         </ul>
     </div>
+    <form class="row g-2 me-2 mb-1" th:action="@{/search}" role="search">
+        <div class="form-group col-auto">
+            <input class="form-control me-1" type="text" name="palabraClave" id = "palabraClave" th:value =
+                    "${palabraClave}" placeholder="Buscar" required>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-light" type="submit"
+                    th:href="@{/search}"><i class="bi bi-search"></i></button>
+        </div>
+    </form>
 </nav>
 
 <br>

@@ -3,6 +3,7 @@ package com.example.agendaContactos.controlador;
 import com.example.agendaContactos.entidad.Contacto;
 import com.example.agendaContactos.servicio.ContactoServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +25,7 @@ public class ContactoControlador {
     public String home(){
         return "home";
     }
+
     @GetMapping("/list")
     public String verPaginaDeInicio(Model modelo){
         List<Contacto> contactos = contactoServicio.listarTodosLosContactos();
@@ -95,5 +97,14 @@ public class ContactoControlador {
         redirect.addFlashAttribute("msgExito", "El contacto ha sido eliminado exitosamente");
 
         return "redirect:/list";
+    }
+
+    @GetMapping("/search")
+    public String verResultadoBusqueda(Model modelo, @Param("palabraClave") String palabraClave) {
+        List<Contacto> contactos = contactoServicio.listAll(palabraClave);
+        modelo.addAttribute("contactos", contactos);
+        modelo.addAttribute("palabraClave", palabraClave);
+
+        return "search";
     }
 }

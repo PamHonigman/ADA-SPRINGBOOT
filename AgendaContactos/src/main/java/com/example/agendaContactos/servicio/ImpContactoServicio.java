@@ -37,4 +37,12 @@ public class ImpContactoServicio  implements ContactoServicio{
     public void eliminar(Contacto contacto) {
         contactoRepositorio.delete(contacto);
     }
+
+    @Override
+    public List<Contacto> listAll(String palabraClave) {
+        if(palabraClave != null){
+            return contactoRepositorio.findAll(palabraClave);
+        }
+        return contactoRepositorio.findAll();
+    }
 }
