@@ -53,7 +53,7 @@
                 Contacto</h3>
             <br>
 
-            <form th:action="@{/save}" th:object="${contacto}" method="post" class="mx-3">
+            <form th:action="@{/update/{id}(id=${contacto.id})}" method="post" class="mx-3" th:object="${contacto}">
 
                 <div class="mb-4">
                     <label for="nombre" class="form-label fs-5">Nombre</label>
