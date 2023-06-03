@@ -1,9 +1,10 @@
 package com.example.agendaContactos.entidad;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -14,6 +15,9 @@ public class Contacto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotBlank(message = "Debe ingresar un nombre")
+    private String nombre;
 
     @NotBlank(message = "Debe ingresar un nombre")
     private String nombre;
