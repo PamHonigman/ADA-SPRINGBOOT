@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Lista de Contactos</title>
@@ -17,35 +17,46 @@
 background-size: cover; background-repeat: no-repeat; background-position: center;">
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <a class="navbar-brand" style="padding-left: 10px;">
+    <a class="navbar-brand" style="padding-left: 10px;" th:href="@{/}">
         <img src="logo.png" alt="" width="35" height="35"
              class="d-inline-block align-text-center">&nbsp;&nbsp;Sistema de
         Registro de Socios</a>
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+    <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/}">Inicio</a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Lista de Contactos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/new}">Añadir</a>
+                <a class="nav-link " th:href="@{/new}">Añadir</a>
             </li>
+            <form class="row g-2 mb-1 " style="padding-left: 20px;" th:action="@{/search}" role="search">
+                <div class="form-group col-auto">
+                    <input class="form-control me-1" type="text" name="palabraClave" id = "palabraClave" th:value =
+                            "${palabraClave}" placeholder="Buscar" required>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-outline-light" type="submit"
+                            th:href="@{/search}"><i class="bi bi-search"></i></button>
+                </div>
+            </form>
         </ul>
     </div>
-    <!--acá va el form de búsqueda-->
-    <form class="row g-2 me-2 mb-1" th:action="@{/search}" role="search">
-        <div class="form-group col-auto">
-            <input class="form-control me-1" type="text" name="palabraClave" id = "palabraClave" th:value =
-                    "${palabraClave}" placeholder="Buscar" required>
-        </div>
-        <div class="col-auto">
-            <button class="btn btn-outline-light" type="submit"
-                    th:href="@{/search}"><i class="bi bi-search"></i></button>
-        </div>
-    </form>
+
+    <div class="nav me-2">
+        <ul class="navbar-nav">
+            <span class="navbar-text text-light me-1"><i class="bi bi-person-circle"></i></span>
+            <span class="navbar-text text-light me-3" sec:authentication="principal.username"></span>
+        </ul>
+        </ul>
+        <li sec:authorize="isAuthenticated()" class="nav-item">
+            <a class="btn btn-info" th:href="@{/logout}">Cerrar sesión <i class="bi bi-door-open"></i></a>
+        </li>
+        </ul>
+    </div>
 </nav>
+
+    <br>
 
 <div class="container">
     <div th:if="${msgExito != null}" class="alert alert-success alert-dismissible">

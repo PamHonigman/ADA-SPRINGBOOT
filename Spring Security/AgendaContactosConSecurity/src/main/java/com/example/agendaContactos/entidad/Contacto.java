@@ -19,9 +19,6 @@ public class Contacto {
     @NotBlank(message = "Debe ingresar un nombre")
     private String nombre;
 
-    @NotBlank(message = "Debe ingresar un nombre")
-    private String nombre;
-
     @NotEmpty(message = "Debe ingresar un correo electrónico")
     @Email(message = "La casilla de correo debe contener @")
     private String email;

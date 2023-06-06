@@ -2,6 +2,7 @@ package com.example.agendaContactos.controlador;
 
 import com.example.agendaContactos.entidad.Contacto;
 import com.example.agendaContactos.servicio.ContactoServicio;
+import com.example.agendaContactos.servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,13 @@ public class ContactoControlador {
     @Autowired
     private ContactoServicio contactoServicio;
 
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
+    @GetMapping("/login")
+    public String iniciarSesion(){
+        return "login";
+    }
     @GetMapping("/")
     public String home(){
         return "home";
@@ -107,4 +115,9 @@ public class ContactoControlador {
 
         return "search";
     }
+
+
+
+
+
 }
